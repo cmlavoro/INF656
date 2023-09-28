@@ -3,7 +3,7 @@ const { readFile, writeFile } = require("fs");
 
 function getAllTasks()
 {
-    readFile("tasks.json", (err, content) => {
+    readFile("tasks.json", "utf-8", (err, content) => {
         if (err) throw err;
         var array = JSON.parse(content);
         console.log(array);
@@ -16,19 +16,26 @@ listTasks();
 
 function addTask(title, description) 
 {
-    // readFile("tasks.json", (err, content) => {
-    //     if (err) throw err;
+    readFile("tasks.json", "utf-8", (err, content) => {
+        if (err) throw err;
 
-    //     var json = [];
-    //     json = JSON.parse(content);
+        var array = JSON.parse(content);
 
-    //     json.push('Title: ' + title, 'Description: ' + description, 'Status: Not started');   
+        var jsonArray = [];
 
-    //     writeFile("tasks.json", JSON.stringify(json), function(err){
-    //       if (err) throw err;
-    //       console.log('The "data to append" was appended to file!');
-    //     });
-    // });
+        for (i in array) {
+            jsonArray.push(array[i]);
+        }
+
+        jsonArray.push({"Title": `${title}`, "Description": `${description}`, "Status": "Not started"}); 
+
+        writeFile("tasks.json", JSON.stringify(jsonArray), "utf-8", function(err){
+          if (err) throw err;
+          console.log('The "data to append" was appended to file!');
+        });
+    });
 }
 
-addTask("Exercise", "Lift weights and go running.");
+//addTask("Teeth", "Brush teeth before bedtime.");
+
+addTask("Dishes", "Wash dishes in the sink.");

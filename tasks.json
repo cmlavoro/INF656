@@ -1,30 +1,42 @@
-{
-    "task1": {
+[
+    {
         "Title": "Mow lawn",
         "Description": "Mowing the lawn around my house",
         "Status": "Not started"
     },
-    "task2": {
+    {
         "Title": "Vacuum",
         "Description": "Vacuum all of the bedrooms",
         "Status": "In Progress"
-    }
-    ,
-    "task3": {
+    },
+    {
         "Title": "Paint",
         "Description": "Paint the wooden fence around the backyard",
         "Status": "Not started"
-    }
-    ,
-    "task4": {
+    },
+    {
         "Title": "Carwash",
         "Description": "Wash and wax all the cars",
         "Status": "Complete"
     },
-    "task5": {
+    {
         "Title": "Sand",
         "Description": "Sand the deck in the backyard",
         "Status": "Complete"
+    },
+    {
+        "Title": "Exercise",
+        "Description": "Lift weights and go running.",
+        "Status": "Not started"
+    },
+    {
+        "Title": "Teeth",
+        "Description": "Brush teeth before bedtime.",
+        "Status": "Not started"
+    },
+    {
+        "Title": "Dishes",
+        "Description": "Wash dishes in the sink.",
+        "Status": "Not started"
     }
-}
-
+]
