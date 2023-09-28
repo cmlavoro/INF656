@@ -1,3 +1,5 @@
+
+
 // Import Fs module
 const { readFile, writeFile } = require("fs");
 
@@ -11,8 +13,6 @@ function getAllTasks()
 }
 
 const listTasks = () => getAllTasks(); 
-
-listTasks();
 
 function addTask(title, description) 
 {
@@ -72,7 +72,44 @@ function completeTask(title)
 }
 
 //addTask("Teeth", "Brush teeth before bedtime.");
-
 //addTask("Dishes", "Wash dishes in the sink.");
-
 //completeTask('Vacuum');
+
+
+const readline = require('readline');
+
+const rl = readline.createInterface(
+		process.stdin, process.stdout);
+
+let menu = '\nPlease enter a choice: \n(1) List all tasks\n(2) Add a new bowling task\n(3) Add a new shopping task\n(4) Add a new sleeping task\n(5) Mark the Vaccum task as completed\n(6) Mark the Teeth task as completed\n';
+
+var choiceMade = "";
+
+rl.setPrompt(menu);
+rl.prompt();
+rl.on('line', (choice) => {
+
+    switch(choice) {
+        case "1":
+            listTasks();
+            break;
+        case "2":
+            addTask("Bowling", "Go bowling with friends.");
+            break;
+        case "3":
+            addTask("Shopping", "Go food shopping");
+          break;
+        case "4":
+            addTask("Sleeping", "Go to sleep");
+          break;
+        case "5":
+            completeTask('Vacuum');
+          break;
+        case "6":
+            completeTask('Teeth');
+          break;
+        default:
+            console.log(`Invalid selection!`);
+      }
+	rl.close();
+});
