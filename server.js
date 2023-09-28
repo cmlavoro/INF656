@@ -36,6 +36,43 @@ function addTask(title, description)
     });
 }
 
+function completeTask(title)
+{
+    readFile("tasks.json", "utf-8", (err, content) => {
+        if (err) throw err;
+
+        var array = JSON.parse(content);
+
+        var jsonArray = [];
+
+        for (i in array) {
+
+           var item = array[i];
+
+           var itemTitle = item['Title'];
+           var itemDescription = item['Description'];
+
+           if(itemTitle != title)
+           {
+             jsonArray.push(array[i]);
+           }
+           else
+           {
+            jsonArray.push({"Title": `${itemTitle}`, "Description": `${itemDescription}`, "Status": "Complete"}); 
+           }
+
+        }
+
+        writeFile("tasks.json", JSON.stringify(jsonArray), "utf-8", function(err){
+            if (err) throw err;
+            console.log('The "data to update" was update to file!');
+          });
+
+    });
+}
+
 //addTask("Teeth", "Brush teeth before bedtime.");
 
-addTask("Dishes", "Wash dishes in the sink.");
+//addTask("Dishes", "Wash dishes in the sink.");
+
+//completeTask('Vacuum');
